@@ -1,0 +1,58 @@
+{
+  "name": "iso-oclif-config",
+  "description": "A simple configuration module/plugin for oclif",
+  "version": "0.1.0-dev.0",
+  "author": "Michael Palmer @Isolated-",
+  "bugs": "https://github.com/Isolated-/iso-oclif-config/issues",
+  "dependencies": {
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "fs-extra": "^9.0.0",
+    "tslib": "^1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "@oclif/plugin-help": "^2",
+    "@oclif/test": "^1",
+    "@types/chai": "^4",
+    "@types/chai-as-promised": "^7.1.2",
+    "@types/fs-extra": "^8.1.0",
+    "@types/mocha": "^5",
+    "@types/node": "^10",
+    "chai": "^4",
+    "chai-as-promised": "^7.1.1",
+    "globby": "^10",
+    "mocha": "^5",
+    "nyc": "^14",
+    "ts-node": "^8",
+    "typescript": "^3.3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/yarn.lock"
+  ],
+  "homepage": "https://github.com/Isolated-/iso-oclif-config",
+  "keywords": [
+    "oclif-plugin"
+  ],
+  "license": "MIT",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "oclif-example",
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "Isolated-/iso-oclif-config",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}
